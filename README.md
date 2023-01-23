@@ -5,8 +5,6 @@ https://docs.cs50.net/web/2020/x/projects/2/project2.html
 
 This is my implementation of the third project in the CS50w course – a simple online messaging app.
 
-![screenshot](https://i.ibb.co/Hnh9ZMy/neplechat2.png)
-
 ## Requirements
 Required Python packages are listed in `requirements.txt` file.
 
@@ -18,3 +16,5 @@ When connecting to app for the first time, user is asked to type in a display na
 All newcoming users are by default connected to *#general* channel, but every user can then create a new channel or join an existing one and start chatting.
 
 **NOTE:** All data are stored in local storage, not a SQL database, as per project description.
+
+![screenshot](https://i.ibb.co/Hnh9ZMy/neplechat2.png)
