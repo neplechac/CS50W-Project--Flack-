@@ -1,5 +1,5 @@
 # CS50W - Web Programming with Python and JavaScript
-## Project 2: Flack (nepleChat)
+## Flack (nepleChat)
 
 https://docs.cs50.net/web/2020/x/projects/2/project2.html
 
