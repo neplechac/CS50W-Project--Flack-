@@ -17,4 +17,4 @@ All newcoming users are by default connected to *#general* channel, but every us
 
 **NOTE:** All data are stored in local storage, not a SQL database, as per project description.
 
-![screenshot](https://i.ibb.co/Hnh9ZMy/neplechat2.png)
+![screenshot](https://i.ibb.co/nj90F4t/neplechat3.png)
