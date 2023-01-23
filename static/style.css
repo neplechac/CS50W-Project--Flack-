@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Roboto:wght@300&display=swap');
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+}
+
+.container {
+    height: 600px;
+    font-family: 'Roboto', sans-serif;
+}
+
+@media (max-width: 767.98px) {
+    .row-offcanvas {
+        position: relative;
+        transition: all .25s ease-out;
+    }
+
+    .row-offcanvas-left {
+        left: 0;
+    }
+
+    .row-offcanvas-left .sidebar-offcanvas {
+        left: -50%;
+    }
+
+    .row-offcanvas-left.active {
+        left: 50%;
+    }
+
+    .sidebar-offcanvas {
+        position:absolute;
+        top: 0;
+        width: 50%;
+    }
+}
+
+.list-scrollable {
+    /* card header is 50px by default */
+    height: 250px;
+    overflow: auto;
+}
+
+#messagesWindow {
+    height: 430px;
+    overflow-y: scroll;
+}
+
+#messageTextarea {
+    resize: none;
+}
+
+.message-container {
+    min-width: 20%;
+    max-width: 60%;
+}
+

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" rel="stylesheet">
+        <link href="/static/style.css" rel="stylesheet" type="text/css">
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+        <script src="/static/script.js"></script>
+
+        <title id="pageTitle">nepleChat</title>
+    </head>
+
+    <body class="bg-light">
+        <h1 class="mt-5">nepleChat</h1>
+        <div class="container-md mt-2">
+            <div class="row row-offcanvas row-offcanvas-left">
+                <div class="col-md-3 p-0 pr-md-2 sidebar-offcanvas">
+                    <div class="card h-100 shadow">
+                        <!-- Channels -->
+                        <div class="card-header bg-info text-white" id="channelHeader">
+                            Channels
+                        </div>
+                        <div class="list-scrollable">
+                            <div class="list-group list-group-flush">
+                                <div id="channelList"></div>
+                                <a href="#" class="list-group-item list-group-item-action" id="createChannel">+ Create channel</a>
+                            </div>
+                        </div>
+                        <!-- Users -->
+                        <div class="card-header bg-info text-white" id="usersHeader">
+                            Users
+                        </div>
+                        <div class="list-scrollable">
+                            <ul class="list-group" id="usersList"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9 p-0">
+                    <div class="card h-100 shadow">
+                        <div class="card-header bg-info text-white">
+                            <span class="d-md-none float-left pr-3" type="button" data-toggle="offcanvas" id="infoButton">≡</span>
+                            <span id="messagesHeader"></span>
+                        </div>
+                        <div class="card-body">
+                            <!-- Messages -->
+                            <div id="messagesWindow">
+
+                                <script id="messageTemplate" type="text/x-handlebars-template">
+                                    {% raw -%}
+                                        <li class="my-1 message-li">
+                                            <div class="d-flex {{ align }}">
+                                                <div class="d-inline-block {{ border }} bg-light p-2 rounded-lg message-container">
+                                                    <div class="small text-info message-header">
+                                                        {{ time }} {{ sender }}
+                                                    </div>
+                                                    <div class="message-body">
+                                                        {{ text }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    {%- endraw %}
+                                </script>
+
+                                <ul class="list-unstyled" id="messagesList"></ul>
+                            </div>
+                            <!-- Message input -->
+                            <form id="messageForm">
+                                <div class="input-group mt-3">
+                                    <textarea class="form-control" placeholder="Type a message" id="messageTextarea"></textarea>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-info" type="button" id="messageSendButton">Send</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Prompt modal -->
+        <div class="modal fade" id="promptModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="promptModalLongTitle">Welcome to NepleChat</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form id="promptModalForm">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text" id=promptModalInputPrepend>@</div>
+                                    </div>
+                                    <input type="text" class="form-control" id="promptModalInput" placeholder="Enter your nickname">
+                                </div>
+                                
+                                <small class="form-text text-danger" id="promptModalErrorMsg"></small>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="promptModalButton">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </body>
+</html>
